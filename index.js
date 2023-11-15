@@ -1,11 +1,5 @@
 const express = require('express')
 const app = express()
-var fs = require('fs');
-var util = require('util');
-var log_file = fs.createWriteStream(__dirname + '/debug.log', { flags: 'w' });
-// console.logz = function (d) { //
-//     log_file.write(util.format(d) + '\n');
-// };
 
 app.get('/', (req, res) => {
     let date_time = new Date();
@@ -16,11 +10,11 @@ app.get('/', (req, res) => {
     let minutes = date_time.getMinutes();
     let seconds = date_time.getSeconds();
 
-    // console.logz("\n============================ ")
-    // console.logz(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds)
-    // console.logz(req);
-    // console.logz(`origin: ${req.get('origin')}`)
-    // console.logz("\n============================\n")
+    console.log("\n============================ ")
+    console.log(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds)
+    console.log(req);
+    console.log(`origin: ${req.get('origin')}`)
+    console.log("\n============================\n")
     res.send('Yee haw >>>')
 })
 app.listen(process.env.PORT || 3000, () => {
